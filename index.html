@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>BREN-GO</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script></head>
+<body>
+    <style>
+        body{
+            margin:0;
+            background-image: url("bg.png");
+            background-size: 350px;
+            background-color: rgba(0, 0, 0,0.95);
+
+        }
+    .cross{
+        background-color: rgba(49, 204, 49,0.95);
+    }
+    #card{
+        width:max-content;
+        
+    }
+
+    td{
+        background-color:rgba(255,255,255,0.95);
+    }
+
+    #imgjaws{
+        width: 306px;
+height: 412px;
+background-image: url("bren.png");
+background-repeat: no-repeat;
+background-size: contain;
+position: fixed;
+bottom: 0;
+right: -30px;
+z-index: -3;
+
+    }
+
+   
+    </style>
+    <img src ="logo.png" style="position:absolute;top:45%;left:5px;z-index:-3">
+    <center><div id="card"><table id="table" style=""></table></div></center> 
+    <div id="imgjaws"> </div>
+</body>
+
+
+<script>
+    
+    var rows = 5;
+    var columns = 5;
+    var str="";
+
+    var height = $(window).height();
+    var width = $(window).width();
+
+    var size = 0;
+    if(height > width){
+        size = (width / rows)-10;
+    }else{
+        size = (height / rows)-10;
+    }
+    
+
+    function randomNoRepeats(array) {
+  var copy = array.slice(0);
+  return function() {
+    if (copy.length < 1) { copy = array.slice(0); }
+    var index = Math.floor(Math.random() * copy.length);
+    var item = copy[index];
+    copy.splice(index, 1);
+    return item;
+  };
+}
+
+var prompts = [
+'"Now we\'re cooking with gas"',
+'groans suggestively for no good reason',
+'screams at the top of his lungs',
+'loud NOOOO',
+'tea kettle wheeze laugh',
+'clears throat',
+'"I\'ll tell you what, chat..."',
+'"OOOooooOOOH!"',
+'Flexes on stream',
+'Dances on stream',
+'"I\'m feeling it chat!"',
+'Convinces teammates his hero pick will work',
+'"You know what, actually?"',
+'"Oh no."',
+'Chat engages in horny discussion',
+'Bren tells chat to stop being horny',
+'Bren tells chat to stop being weird',
+'"What in the Lord\'s name???"',
+'"I like it!"',
+'"Yeah yeah yeah yeah yeah"',
+'"GET THE CLIP"',
+'"Look at THIS, chat"',
+'"How did that miss???"',
+'high pitched sounds of confusion',
+'hyperventilates',
+'"How did that X not Y????"',
+'"wait, REAL BREN?"',
+'"Hey are you that Overwatch League caster?"',
+'"are you guys British???"',
+'"are you guys Australian???"',
+'holds back mental breakdown as he freaks out about the game',
+  ];
+
+var chooser = randomNoRepeats(prompts);
+
+    for(var r = 0; r < rows; r++){
+        str += "<tr style=''>";
+        for(var c = 0; c < columns; c++){
+            if(c == 2 && r == 2) str += '<td style="width:'+size+'px; height:'+size+'px;text-align:center;font-size:12px" class="td" id="cell_'+r+'_'+c+'" ><img src ="https://pbs.twimg.com/media/EV23AEjUEAAPrHE.jpg" style="width:'+(size-10)+'px; height:'+(size-10)+'px"></td>';
+            else str += "<td style='cursor:pointer;width:"+size+"px;border:2px dotted   grey; height:"+size+"px;text-align:center;font-size:12px' class='td' id='cell_"+r+"_"+c+"'>"+chooser()+"</td>";
+        }
+        str += "</tr>";
+    }
+
+    $("#table").html(str);
+
+
+    $(".td").click(function(){
+        $(this).toggleClass("cross")
+    });
+
+    
+</script>
+</html>
