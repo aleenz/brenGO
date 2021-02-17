@@ -6,7 +6,7 @@
     <title>BREN-GO</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <link rel="icon" href="3.0.ico">
+    <link rel="icon" href="3.0.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script></head>
 <body>
     <style>
@@ -117,7 +117,7 @@ var chooser = randomNoRepeats(prompts);
     for(var r = 0; r < rows; r++){
         str += "<tr style=''>";
         for(var c = 0; c < columns; c++){
-            if(c == 2 && r == 2) str += '<td style="width:'+size+'px; height:'+size+'px;text-align:center;font-size:12px" class="td" id="cell_'+r+'_'+c+'" ><img src ="https://pbs.twimg.com/media/EV23AEjUEAAPrHE.jpg" style="width:'+(size-10)+'px; height:'+(size-10)+'px"></td>';
+            if(c == 2 && r == 2) str += '<td style="width:'+size+'px; height:'+size+'px;text-align:center;font-size:12px" class="td" id="cell_'+r+'_'+c+'" ><img src ="https://media.discordapp.net/attachments/749429668129538048/811425227712102440/brengo.png" style="width:'+(size-10)+'px; height:'+(size-10)+'px"></td>';
             else str += "<td style='cursor:pointer;width:"+size+"px;border:2px dotted   grey; height:"+size+"px;text-align:center;font-size:12px' class='td' id='cell_"+r+"_"+c+"'>"+chooser()+"</td>";
         }
         str += "</tr>";
